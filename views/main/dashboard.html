@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{template "general/header"}}
+  </head>
+  <body class="bg-slate-800">
+    <section class="categories-side flex flex-col w-full h-fit">
+      <h3 class="font-medium leading-tight text-5xl pt-5 ml-5 text-stone-50">Kanban App</h3>
+      <div class="cat-add flex justify-center h-17 w-1/2 p-2 mt-9 bg-green-500 text-white rounded-xl">
+        <a href="/category/add"> Add Category + </a>
+      </div>
+
+      <!-- categories -->
+      {{ range $index,$elem := . }}
+      <div id="{{ $elem.ID }}" class="cat-item h-17 p-5 mt-5 bg-zinc-900 text-center text-white rounded-xl">
+        <a href="">{{ $elem.Type }}</a><br />
+        <button
+          class="inline-block px-6 py-2.5 bg-teal-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-teal-500 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          <a href="/task/add?category={{ $elem.ID }}">Add Task +</a>
+        </button>
+      </div>
+
+      <!-- task by category ID -->
+      <section class="task-side h-fit ml-16 mt-2 grid grid-flow-row-dense grid-cols-3 gap-3">
+        {{ range $index,$tasks := $elem.Tasks }}
+        <!-- !start -->
+        <div class="flex justify-center">
+          <div class="block rounded-lg shadow-lg bg-teal-500 max-w-sm text-center">
+            <div class="py-3 px-6 border-b border-gray-300">{{ $elem.Type }}</div>
+            <div class="p-6">
+              <h5 class="text-gray-900 text-xl font-medium mb-2">{{ $tasks.Title }}</h5>
+              <p class="text-gray-700 text-base mb-4">{{ $tasks.Description }}</p>
+              <span
+                ><button
+                  class="inline-block px-6 py-2.5 bg-teal-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-teal-500 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
+                  <a href="/task/update?task_id={{ $tasks.ID }}">Edit (/)</a>
+                </button>
+                <button
+                  class="inline-block px-6 py-2.5 bg-teal-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-teal-500 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
+                  <a href="/task/add?category={{ $elem.ID }}">Delete (-)</a>
+                </button></span
+              >
+            </div>
+            <div class="py-3 px-6 border-t border-gray-300 text-gray-600">{{ $tasks.UpdatedAt }}</div>
+          </div>
+        </div>
+        <!-- ! end -->
+        {{ end }}
+      </section>
+      {{ end }}
+    </section>
+  </body>
+</html>
