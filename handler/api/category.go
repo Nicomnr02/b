@@ -43,7 +43,7 @@ func (c *categoryAPI) GetCategory(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(&categories)
 	}
-	// TODO: answer here
+	// TODO: done
 }
 
 func (c *categoryAPI) CreateNewCategory(w http.ResponseWriter, r *http.Request) {
@@ -80,7 +80,7 @@ func (c *categoryAPI) CreateNewCategory(w http.ResponseWriter, r *http.Request) 
 		json.NewEncoder(w).Encode(map[string]interface{}{"user_id": currentUserID, "category_id": newCat.ID, "message": "success create new category"})
 	}
 
-	// TODO: answer here
+	// TODO: done
 }
 
 func (c *categoryAPI) DeleteCategory(w http.ResponseWriter, r *http.Request) {
@@ -95,7 +95,7 @@ func (c *categoryAPI) DeleteCategory(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]interface{}{"user_id": currentUserID, "category_id": catID, "message": "success delete category"})
-	// TODO: answer here
+	// TODO: done
 }
 
 func (c *categoryAPI) GetCategoryWithTasks(w http.ResponseWriter, r *http.Request) {

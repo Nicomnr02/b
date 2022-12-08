@@ -43,7 +43,7 @@ func (r *categoryRepository) GetCategoriesByUserId(ctx context.Context, id int) 
 		fmt.Println("semua cate ==  ", c)
 	}
 
-	return categories, nil // TODO: GET CATEGORY BY USER ID
+	return categories, nil // TODO: done
 }
 
 func (r *categoryRepository) StoreCategory(ctx context.Context, category *entity.Category) (categoryId int, err error) {
@@ -51,7 +51,7 @@ func (r *categoryRepository) StoreCategory(ctx context.Context, category *entity
 	if err := r.db.Save(&category).Error; err != nil {
 		return 0, err
 	}
-	return category.ID, nil // TODO:STORE CATEGORY
+	return category.ID, nil // TODO: done
 }
 
 func (r *categoryRepository) StoreManyCategory(ctx context.Context, categories []entity.Category) error {
@@ -60,7 +60,7 @@ func (r *categoryRepository) StoreManyCategory(ctx context.Context, categories [
 		return err
 	}
 	return nil
-	//todo: STORE MANY CATEGORY
+	//todo: done
 }
 
 func (r *categoryRepository) GetCategoryByID(ctx context.Context, id int) (entity.Category, error) {
@@ -69,19 +69,19 @@ func (r *categoryRepository) GetCategoryByID(ctx context.Context, id int) (entit
 		return entity.Category{}, err
 	}
 
-	return categoryByID, nil // TODO: replace this
+	return categoryByID, nil // TODO: done
 }
 
 func (r *categoryRepository) UpdateCategory(ctx context.Context, category *entity.Category) error {
 	if err := r.db.Model(&category).Where("id = ?", category.ID).Updates(&category).Error; err != nil {
 		return err
 	}
-	return nil // TODO: replace this
+	return nil // TODO: done
 }
 
 func (r *categoryRepository) DeleteCategory(ctx context.Context, id int) error {
 	if err := r.db.Where("id = ?", id).Delete(&entity.Category{}).Error; err != nil {
 		return err
 	}
-	return nil // TODO: replace this
+	return nil // TODO: done
 }

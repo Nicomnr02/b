@@ -188,12 +188,14 @@ func (a *modifyWeb) UpdateTaskProcess(w http.ResponseWriter, r *http.Request) {
 func (a *modifyWeb) DeleteTask(w http.ResponseWriter, r *http.Request) {
 	taskId := r.URL.Query().Get("task_id")
 
-	_, err := a.taskClient.DeleteTask(taskId, r.Context().Value("id").(string))
+	respCode, err := a.taskClient.DeleteTask(taskId, r.Context().Value("id").(string))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
+	if respCode == http.StatusOK {
+		http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
+	}
 	// TODO: answer here
 }
 

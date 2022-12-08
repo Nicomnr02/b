@@ -37,12 +37,13 @@
                 >
                   <a href="/task/update?task_id={{ $tasks.ID }}">Edit (/)</a>
                 </button>
-                <button
+
+                <a
                   class="inline-block px-6 py-2.5 bg-teal-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-teal-500 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  href="/task/delete?task_id={{ $tasks.ID }}"
+                  >Delete (-)</a
                 >
-                  <a href="/task/add?category={{ $elem.ID }}">Delete (-)</a>
-                </button></span
-              >
+              </span>
             </div>
             <div class="py-3 px-6 border-t border-gray-300 text-gray-600">{{ $tasks.UpdatedAt }}</div>
           </div>

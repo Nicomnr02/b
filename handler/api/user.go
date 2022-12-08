@@ -37,7 +37,7 @@ func (u *userAPI) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO:LOGIN ACTION
+	// TODO: done
 
 	if validUserID, err := u.userService.Login(r.Context(), &entity.User{Email: user.Email, Password: user.Password}); err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -69,7 +69,7 @@ func (u *userAPI) Register(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: REGISTER ACTION
+	// TODO: done
 	if user.Fullname == "" || user.Email == "" || user.Password == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(entity.NewErrorResponse("register data is empty"))
@@ -91,7 +91,7 @@ func (u *userAPI) Register(w http.ResponseWriter, r *http.Request) {
 
 func (u *userAPI) Logout(w http.ResponseWriter, r *http.Request) {
 
-	// TODO:LOGOUT ACTION
+	// TODO: done
 	if currentCookie, err := r.Cookie("user_id"); err != nil {
 		if err == http.ErrNoCookie {
 			return

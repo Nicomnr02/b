@@ -93,7 +93,7 @@ func (t *taskClient) GetTaskById(id, userID string) (entity.Task, error) {
 func (t *taskClient) UpdateTask(id, title, description, userID string) (respCode int, err error) {
 	client, err := GetClientWithCookie(userID)
 	if err != nil {
-		return -1, err
+		panic("parah banggggggggggggggggggg")
 	}
 
 	taskId, err := strconv.Atoi(id)
@@ -163,7 +163,6 @@ func (t *taskClient) UpdateCategoryTask(id, catId, userID string) (respCode int,
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-
 	resp, err := client.Do(req)
 	if err != nil {
 		return -1, err

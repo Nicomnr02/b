@@ -89,7 +89,7 @@ func (a *authWeb) Register(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(entity.NewErrorResponse("Method not allowed"))
 		return
 	}
-	// TODO: answer here
+	// TODO: done
 }
 
 func (a *authWeb) RegisterProcess(w http.ResponseWriter, r *http.Request) {
@@ -133,5 +133,5 @@ func (a *authWeb) Logout(w http.ResponseWriter, r *http.Request) {
 		http.SetCookie(w, currentCookie)
 	}
 
-	// TODO: answer here
+	// TODO: done
 }
